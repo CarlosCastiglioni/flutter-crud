@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/home_page.dart';
-import 'package:flutter_crud/login_page.dart';
+import 'package:flutter_crud/modules/home/home_page.dart';
+import 'package:flutter_crud/modules/login/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {

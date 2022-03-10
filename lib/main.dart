@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/welcome_page.dart';
+import 'package:flutter_crud/modules/welcome/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
