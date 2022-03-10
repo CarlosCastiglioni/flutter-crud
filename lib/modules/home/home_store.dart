@@ -23,6 +23,12 @@ abstract class _HomeStoreBase with Store {
     token = sharedPreferences.get("token");
   }
 
+  Future<bool> sair() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    token = sharedPreferences.clear();
+    return true;
+  }
+
   Future getUsers() async {
     await getToken();
     var url = Uri.parse("$baseUrl/person");
@@ -34,5 +40,23 @@ abstract class _HomeStoreBase with Store {
     var list = jsonDecode(json) as List;
     users = list.map((i) => User.fromJson(i));
     return users;
+  }
+
+  Future addUsers() async {
+    await getToken();
+    var url = Uri.parse("$baseUrl/person");
+    var response = await http.post(
+      url,
+      body: jsonEncode({
+        'id': "123",
+        'name': "Teste6",
+        "cpf": "123.123.123-16",
+        "email": "teste6@teste.com.br",
+        "password": "123",
+        "profiles": ["USER"]
+      }),
+      headers: {'Content-type': 'application/json', 'Authorization': token},
+    );
+    return response;
   }
 }

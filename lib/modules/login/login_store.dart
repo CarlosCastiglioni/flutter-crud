@@ -11,12 +11,15 @@ class LoginStore = _LoginStoreBase with _$LoginStore;
 String username = '', password = '';
 
 abstract class _LoginStoreBase with Store {
+  final baseUrl = "https://poc-person-service.herokuapp.com/poc/person-api/v1";
+
   Future<bool> login() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var url = Uri.parse(
-        "http://poc-person-service.herokuapp.com/poc/person-api/v1/authenticates/login");
+    var url = Uri.parse("$baseUrl/authenticates/login");
     var response = await http.post(url,
-        body: jsonEncode({'username': username, 'password': password}),
+        // body: jsonEncode({'username': username, 'password': password}),
+        body: jsonEncode(
+            {'username': "dev001@mail.com.br", 'password': "rmvrK2g7O7"}),
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json'

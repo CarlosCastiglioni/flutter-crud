@@ -15,26 +15,26 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     super.initState();
     verifyToken().then((value) {
-      if (value) {
+      if (value = true) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => const HomePage()));
       } else {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: CircularProgressIndicator()),
     );
   }
 
   Future<bool> verifyToken() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    if (sharedPreferences.getString("token") != null) {
+    if (sharedPreferences.get("token") != null) {
       return true;
     } else {
       return false;

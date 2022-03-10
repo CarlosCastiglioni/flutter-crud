@@ -3,6 +3,8 @@ import 'package:flutter_crud/components/user_tile.dart';
 import 'package:flutter_crud/modules/home/home_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../login/login_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,16 +25,45 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lista de usuários"),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 30.0),
+              child: TextButton(
+                  onPressed: () {
+                    controller.sair();
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                  child: const Text(
+                    "Sair",
+                    style: TextStyle(color: Colors.white, fontSize: 10),
+                  )),
+            ),
+            const Text(
+              "Lista de usuários",
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await controller.addUsers();
+                await controller.getUsers();
+              },
+              icon: const Icon(Icons.add))
+        ],
       ),
       body: Observer(
         builder: (_) {
-          return ListView.builder(
-            itemCount: controller.users.length,
-            itemBuilder: (context, i) => UserTile(
-              title: controller.users.elementAt(i).name,
-              subtitle: controller.users.elementAt(i).email,
+          return Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: ListView.builder(
+              itemCount: controller.users.length,
+              itemBuilder: (context, i) => UserTile(
+                title: controller.users.elementAt(i).name,
+                subtitle: controller.users.elementAt(i).email,
+              ),
             ),
           );
         },
