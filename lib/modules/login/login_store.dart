@@ -23,7 +23,7 @@ abstract class _LoginStoreBase with Store {
         });
     if (response.statusCode == 200) {
       var token = (jsonDecode(response.body)["token"]);
-      await sharedPreferences.setString("token", "Token {Bearer $token");
+      await sharedPreferences.setString("token", "{Bearer $token");
       return true;
     } else {
       return false;
