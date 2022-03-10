@@ -1,12 +1,19 @@
+import 'dart:convert';
+
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../models/users.dart';
 part 'home_store.g.dart';
 
 class HomeStore = _HomeStoreBase with _$HomeStore;
 
 abstract class _HomeStoreBase with Store {
   final baseUrl = "https://poc-person-service.herokuapp.com/poc/person-api/v1";
+
+  @observable
+  Iterable<User> users = [];
 
   @observable
   dynamic token;
@@ -23,6 +30,9 @@ abstract class _HomeStoreBase with Store {
       url,
       headers: {'Authorization': token},
     );
-    print(response.body.toString());
+    var json = response.body;
+    var list = jsonDecode(json) as List;
+    users = list.map((i) => User.fromJson(i));
+    return users;
   }
 }
