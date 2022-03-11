@@ -17,9 +17,9 @@ abstract class _LoginStoreBase with Store {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var url = Uri.parse("$baseUrl/authenticates/login");
     var response = await http.post(url,
-        // body: jsonEncode({'username': username, 'password': password}),
-        body: jsonEncode(
-            {'username': "dev001@mail.com.br", 'password': "rmvrK2g7O7"}),
+        body: jsonEncode({'username': username, 'password': password}),
+        // body: jsonEncode(
+        //     {'username': "dev001@mail.com.br", 'password': "rmvrK2g7O7"}),
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json'

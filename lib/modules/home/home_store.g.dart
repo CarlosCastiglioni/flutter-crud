@@ -99,6 +99,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$messageAtom = Atom(name: '_HomeStoreBase.message');
+
+  @override
+  String get message {
+    _$messageAtom.reportRead();
+    return super.message;
+  }
+
+  @override
+  set message(String value) {
+    _$messageAtom.reportWrite(value, super.message, () {
+      super.message = value;
+    });
+  }
+
   final _$tokenAtom = Atom(name: '_HomeStoreBase.token');
 
   @override
@@ -123,6 +138,7 @@ cpf: ${cpf},
 name: ${name},
 users: ${users},
 unlogged: ${unlogged},
+message: ${message},
 token: ${token}
     ''';
   }

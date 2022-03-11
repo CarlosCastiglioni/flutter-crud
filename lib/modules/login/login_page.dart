@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_crud/modules/home/home_page.dart';
 import 'package:flutter_crud/modules/login/login_store.dart';
@@ -75,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                                       builder: (context) => HomePage()));
                             } else {
                               _passwordController.clear();
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
+                              BotToast.showText(
+                                  text: "E-mail ou senha inválidos");
                             }
                           }
                         },
@@ -90,12 +91,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  final snackBar = SnackBar(
-    content: Text(
-      "E-mail ou senha inválidos",
-      textAlign: TextAlign.center,
-    ),
-    backgroundColor: Colors.redAccent,
-  );
 }

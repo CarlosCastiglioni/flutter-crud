@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -128,7 +129,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
                               MaterialPageRoute(
                                   builder: (context) => const HomePage()));
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          BotToast.showText(text: "E-mail ou Cpf já existem!");
                         }
                       }
                     },
@@ -142,12 +143,4 @@ class _NewUserDialogState extends State<NewUserDialog> {
       ),
     );
   }
-
-  final snackBar = SnackBar(
-    content: Text(
-      "E-mail ou Cpf ja existem!",
-      textAlign: TextAlign.center,
-    ),
-    backgroundColor: Colors.redAccent,
-  );
 }

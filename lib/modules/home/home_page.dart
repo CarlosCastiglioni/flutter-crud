@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: controller.users.length,
               itemBuilder: (context, i) => UserTile(
                 title: controller.users.elementAt(i).name,
-                subtitle: controller.users.elementAt(i).email,
+                id: controller.users.elementAt(i).id,
               ),
             ),
           );

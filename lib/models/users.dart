@@ -1,5 +1,5 @@
 class User {
-  String? id;
+  String id = "";
   String? cpf;
   String name = "";
   String? email;
@@ -7,7 +7,7 @@ class User {
   List<String>? profiles;
 
   User(
-      {this.id,
+      {required this.id,
       this.cpf,
       required this.name,
       this.email,

@@ -22,6 +22,9 @@ abstract class _HomeStoreBase with Store {
   bool unlogged = false;
 
   @observable
+  String message = "";
+
+  @observable
   dynamic token;
 
   Future<dynamic> getToken() async {
@@ -54,6 +57,20 @@ abstract class _HomeStoreBase with Store {
       return users;
     } else {
       logout();
+    }
+  }
+
+  Future deleteUser(String id) async {
+    await getToken();
+    var url = Uri.parse("$baseUrl/person/$id");
+    var response = await http.delete(
+      url,
+      headers: {'Authorization': token},
+    );
+    if (response.statusCode == 200) {
+      message = "Usuário deletado com sucesso!";
+    } else {
+      message = "Não é permitido deletar este usuário!";
     }
   }
 
