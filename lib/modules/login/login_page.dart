@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/modules/home/home_page.dart';
 import 'package:flutter_crud/modules/login/login_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -70,10 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                               currentFocus.unfocus();
                             }
                             if (worked) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                              Navigator.pushReplacementNamed(context, "/home");
                             } else {
                               _passwordController.clear();
                               BotToast.showText(

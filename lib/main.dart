@@ -1,5 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/modules/home/home_page.dart';
+import 'package:flutter_crud/modules/login/login_page.dart';
 import 'package:flutter_crud/modules/welcome/welcome_page.dart';
 
 void main() {
@@ -18,7 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomePage(),
+      initialRoute: "/welcome",
+      routes: {
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage(),
+        "/welcome": (context) => WelcomePage()
+      },
     );
   }
 }

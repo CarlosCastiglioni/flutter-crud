@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/modules/home/home_page.dart';
 import 'package:flutter_crud/modules/home/home_store.dart';
-import 'package:flutter_crud/modules/login/login_page.dart';
 import 'package:flutter_crud/modules/welcome/welcome_page_store.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -21,11 +19,9 @@ class _WelcomePageState extends State<WelcomePage> {
     homeController.getToken();
     controller.verifyToken().then((value) {
       if (value = true && homeController.unlogged != true) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const HomePage()));
+        Navigator.pushReplacementNamed(context, "/home");
       } else {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LoginPage()));
+        Navigator.pushReplacementNamed(context, "/login");
       }
     });
   }

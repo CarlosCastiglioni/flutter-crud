@@ -69,6 +69,9 @@ abstract class _HomeStoreBase with Store {
     );
     if (response.statusCode == 200) {
       message = "Usuário deletado com sucesso!";
+    } else if (response.statusCode == 403) {
+      message = "Token vencido, faça login novamente.";
+      unlogged = true;
     } else {
       message = "Não é permitido deletar este usuário!";
     }
@@ -92,6 +95,10 @@ abstract class _HomeStoreBase with Store {
       return true;
     } else if (response.statusCode == 422) {
       return false;
+    } else if (response.statusCode == 403) {
+      message = "Token vencido, faça login novamente.";
+      unlogged = true;
+      return unlogged;
     } else {
       return false;
     }

@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/modules/home/home_page.dart';
 
 import '../modules/home/home_store.dart';
 
@@ -25,27 +24,21 @@ class _UserTileState extends State<UserTile> {
       subtitle: Text(widget.id),
       trailing: SizedBox(
         width: 100,
-        child: Row(
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.edit,
-                  color: Colors.green,
-                )),
-            IconButton(
-                onPressed: () async {
-                  await controller.deleteUser(widget.id);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                  BotToast.showText(text: "Usuário deletado com sucesso!");
-                },
-                icon: const Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                )),
-          ],
-        ),
+        child: IconButton(
+            onPressed: () async {
+              await controller.deleteUser(widget.id);
+              if (controller.unlogged == false) {
+                Navigator.pushReplacementNamed(context, "/home");
+                BotToast.showText(text: controller.message);
+              } else {
+                Navigator.pushReplacementNamed(context, "/login");
+                BotToast.showText(text: controller.message);
+              }
+            },
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            )),
       ),
     );
   }

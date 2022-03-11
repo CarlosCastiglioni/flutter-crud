@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_crud/modules/home/home_store.dart';
 
-import '../modules/home/home_page.dart';
-
 class NewUserDialog extends StatefulWidget {
   const NewUserDialog({Key? key}) : super(key: key);
 
@@ -78,6 +76,8 @@ class _NewUserDialogState extends State<NewUserDialog> {
               validator: (cpf) {
                 if (cpf == null || cpf.isEmpty) {
                   return "Por favor, digite seu cpf";
+                } else if (cpf.length < 14) {
+                  return "Por favor, digite um cpf válido";
                 } else {
                   return null;
                 }
@@ -124,10 +124,10 @@ class _NewUserDialogState extends State<NewUserDialog> {
                           currentFocus.unfocus();
                         }
                         if (worked) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                          BotToast.showText(
+                              text: "Usuário cadastrado com sucesso!");
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, "/home", (route) => false);
                         } else {
                           BotToast.showText(text: "E-mail ou Cpf já existem!");
                         }
