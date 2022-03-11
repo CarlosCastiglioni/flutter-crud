@@ -123,13 +123,19 @@ class _NewUserDialogState extends State<NewUserDialog> {
                         if (!currentFocus.hasPrimaryFocus) {
                           currentFocus.unfocus();
                         }
-                        if (worked) {
-                          BotToast.showText(
-                              text: "Usuário cadastrado com sucesso!");
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, "/home", (route) => false);
+                        if (homeController.unlogged != true) {
+                          if (worked) {
+                            BotToast.showText(
+                                text: "Usuário cadastrado com sucesso!");
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, "/home", (route) => false);
+                          } else {
+                            BotToast.showText(
+                                text: "E-mail ou Cpf já existem!");
+                          }
                         } else {
-                          BotToast.showText(text: "E-mail ou Cpf já existem!");
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, "/login", (route) => false);
                         }
                       }
                     },
