@@ -52,8 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (password) {
                         if (password == null || password.isEmpty) {
                           return "Por favor, digite sua senha";
-                        } else if (password.length < 6) {
-                          return "Por favor, digite uma senha maior que 6 caracteres";
                         }
                         return null;
                       },
