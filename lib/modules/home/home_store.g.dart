@@ -24,6 +24,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$unloggedAtom = Atom(name: '_HomeStoreBase.unlogged');
+
+  @override
+  bool get unlogged {
+    _$unloggedAtom.reportRead();
+    return super.unlogged;
+  }
+
+  @override
+  set unlogged(bool value) {
+    _$unloggedAtom.reportWrite(value, super.unlogged, () {
+      super.unlogged = value;
+    });
+  }
+
   final _$tokenAtom = Atom(name: '_HomeStoreBase.token');
 
   @override
@@ -43,6 +58,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   String toString() {
     return '''
 users: ${users},
+unlogged: ${unlogged},
 token: ${token}
     ''';
   }

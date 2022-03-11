@@ -16,17 +16,24 @@ abstract class _HomeStoreBase with Store {
   Iterable<User> users = [];
 
   @observable
+  bool unlogged = false;
+
+  @observable
   dynamic token;
 
   Future<dynamic> getToken() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     token = sharedPreferences.get("token");
+    if (token == null) {
+      unlogged = true;
+    }
   }
 
-  Future<bool> sair() async {
+  Future<bool> logout() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     token = sharedPreferences.clear();
-    return true;
+    unlogged = true;
+    return unlogged;
   }
 
   Future getUsers() async {
@@ -36,10 +43,15 @@ abstract class _HomeStoreBase with Store {
       url,
       headers: {'Authorization': token},
     );
-    var json = response.body;
-    var list = jsonDecode(json) as List;
-    users = list.map((i) => User.fromJson(i));
-    return users;
+    if (response.statusCode == 200) {
+      var json = response.body;
+      var list = jsonDecode(json) as List;
+      users = list.map((i) => User.fromJson(i));
+
+      return users;
+    } else {
+      logout();
+    }
   }
 
   Future addUsers() async {

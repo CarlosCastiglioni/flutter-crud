@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(right: 30.0),
               child: TextButton(
                   onPressed: () {
-                    controller.sair();
+                    controller.logout();
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => LoginPage()));
                   },
@@ -49,8 +49,6 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () async {
-                // await controller.addUsers();
-                // await controller.getUsers();
                 showDialog(context: context, builder: (_) => NewUserDialog());
               },
               icon: const Icon(Icons.add))
