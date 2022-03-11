@@ -13,6 +13,9 @@ abstract class _HomeStoreBase with Store {
   final baseUrl = "https://poc-person-service.herokuapp.com/poc/person-api/v1";
 
   @observable
+  String email = "", password = "", cpf = "", name = "";
+
+  @observable
   Iterable<User> users = [];
 
   @observable
