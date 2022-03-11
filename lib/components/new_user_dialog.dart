@@ -35,6 +35,8 @@ class _NewUserDialogState extends State<NewUserDialog> {
               validator: (name) {
                 if (name == null || name.isEmpty) {
                   return "Por favor, digite seu nome";
+                } else {
+                  return null;
                 }
               },
               controller: _nameController,
@@ -63,6 +65,8 @@ class _NewUserDialogState extends State<NewUserDialog> {
               validator: (password) {
                 if (password == null || password.isEmpty) {
                   return "Por favor, digite sua senha";
+                } else {
+                  return null;
                 }
               },
               controller: _passwordController,
@@ -73,6 +77,8 @@ class _NewUserDialogState extends State<NewUserDialog> {
               validator: (cpf) {
                 if (cpf == null || cpf.isEmpty) {
                   return "Por favor, digite seu cpf";
+                } else {
+                  return null;
                 }
               },
               inputFormatters: [
@@ -82,7 +88,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
               controller: _cpfController,
               keyboardType: TextInputType.number,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -95,7 +101,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("Cancelar"),
+                    child: const Text("Cancelar"),
                   ),
                 ),
                 const SizedBox(
@@ -108,11 +114,11 @@ class _NewUserDialogState extends State<NewUserDialog> {
                     onPressed: () async {
                       homeController.cpf = _cpfController.text;
                       homeController.name = _nameController.text;
-                      homeController.email = _passwordController.text;
+                      homeController.email = _emailController.text;
                       homeController.password = _cpfController.text;
                       FocusScopeNode currentFocus = FocusScope.of(context);
                       if (_formKey.currentState!.validate()) {
-                        bool worked = await homeController.addUsers();
+                        final worked = await homeController.addUsers();
                         if (!currentFocus.hasPrimaryFocus) {
                           currentFocus.unfocus();
                         }
@@ -120,13 +126,13 @@ class _NewUserDialogState extends State<NewUserDialog> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => const HomePage()));
                         } else {
-                          _passwordController.clear();
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       }
                     },
-                    child: Text("Enviar"),
+                    child: const Text("Enviar"),
                   ),
                 ),
               ],
@@ -136,4 +142,12 @@ class _NewUserDialogState extends State<NewUserDialog> {
       ),
     );
   }
+
+  final snackBar = SnackBar(
+    content: Text(
+      "E-mail ou Cpf ja existem!",
+      textAlign: TextAlign.center,
+    ),
+    backgroundColor: Colors.redAccent,
+  );
 }

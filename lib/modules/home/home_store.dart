@@ -57,21 +57,26 @@ abstract class _HomeStoreBase with Store {
     }
   }
 
-  Future addUsers() async {
+  Future<bool> addUsers() async {
     await getToken();
     var url = Uri.parse("$baseUrl/person");
     var response = await http.post(
       url,
       body: jsonEncode({
-        'id': "123",
-        'name': "Teste6",
-        "cpf": "123.123.123-16",
-        "email": "teste6@teste.com.br",
-        "password": "123",
+        "name": name,
+        "cpf": cpf,
+        "email": email,
+        "password": password,
         "profiles": ["USER"]
       }),
       headers: {'Content-type': 'application/json', 'Authorization': token},
     );
-    return response;
+    if (response.statusCode == 201) {
+      return true;
+    } else if (response.statusCode == 422) {
+      return false;
+    } else {
+      return false;
+    }
   }
 }
