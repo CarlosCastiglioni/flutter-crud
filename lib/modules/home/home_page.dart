@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/components/new_user_dialog.dart';
 import 'package:flutter_crud/components/user_tile.dart';
 import 'package:flutter_crud/modules/home/home_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -48,8 +49,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () async {
-                await controller.addUsers();
-                await controller.getUsers();
+                // await controller.addUsers();
+                // await controller.getUsers();
+                showDialog(context: context, builder: (_) => NewUserDialog());
               },
               icon: const Icon(Icons.add))
         ],
