@@ -41,7 +41,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
             ),
             CpfInput(cpfController: _cpfController),
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

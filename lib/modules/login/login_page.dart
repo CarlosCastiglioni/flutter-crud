@@ -31,6 +31,14 @@ class _LoginPageState extends State<LoginPage> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const Padding(
+                      padding: EdgeInsets.all(50.0),
+                      child: Center(
+                          child: Text(
+                        "Login",
+                        style: TextStyle(color: Colors.green, fontSize: 30),
+                      )),
+                    ),
                     EmailInput(
                       emailController: _emailController,
                     ),
