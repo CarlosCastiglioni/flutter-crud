@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: const Text(
                       "Sair",
-                      style: TextStyle(color: Colors.white, fontSize: 10),
+                      style: TextStyle(color: Colors.red, fontSize: 14),
                     )),
               ),
               const Text(
@@ -50,11 +50,15 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: [
-            IconButton(
-                onPressed: () async {
-                  showDialog(context: context, builder: (_) => NewUserDialog());
-                },
-                icon: const Icon(Icons.add))
+            TextButton(
+              onPressed: () async {
+                showDialog(context: context, builder: (_) => NewUserDialog());
+              },
+              child: Text(
+                "+ Novo Usuário",
+                style: TextStyle(color: Colors.black, fontSize: 14),
+              ),
+            )
           ],
         ),
         body: Observer(

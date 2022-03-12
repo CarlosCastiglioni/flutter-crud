@@ -22,7 +22,6 @@ class _NewUserDialogState extends State<NewUserDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Cadastrar novo usuário"),
       content: Form(
         key: _formKey,
         child: Column(
