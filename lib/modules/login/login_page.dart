@@ -1,5 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/components/email_input.dart';
+import 'package:flutter_crud/components/password_input.dart';
 import 'package:flutter_crud/modules/login/login_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -23,39 +25,16 @@ class _LoginPageState extends State<LoginPage> {
         key: _formKey,
         child: Center(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Observer(
               builder: (_) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    TextFormField(
-                      decoration: const InputDecoration(labelText: "E-mail"),
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (email) {
-                        if (email == null || email.isEmpty) {
-                          return "Por favor, digite seu e-mail";
-                        } else if (!RegExp(
-                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(_emailController.text)) {
-                          return 'Por favor, digite um e-mail correto';
-                        }
-                        return null;
-                      },
+                    EmailInput(
+                      emailController: _emailController,
                     ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: const InputDecoration(labelText: "Senha"),
-                      controller: _passwordController,
-                      keyboardType: TextInputType.text,
-                      validator: (password) {
-                        if (password == null || password.isEmpty) {
-                          return "Por favor, digite sua senha";
-                        }
-                        return null;
-                      },
-                    ),
+                    PasswordInput(passwordController: _passwordController),
                     ElevatedButton(
                         onPressed: () async {
                           username = _emailController.text;

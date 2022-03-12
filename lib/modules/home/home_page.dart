@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
           title: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 30.0),
+                padding: const EdgeInsets.only(right: 25.0),
                 child: TextButton(
                     onPressed: () {
                       controller.logout();
@@ -52,9 +52,10 @@ class _HomePageState extends State<HomePage> {
           actions: [
             TextButton(
               onPressed: () async {
-                showDialog(context: context, builder: (_) => NewUserDialog());
+                showDialog(
+                    context: context, builder: (_) => const NewUserDialog());
               },
-              child: Text(
+              child: const Text(
                 "+ Novo Usuário",
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, i) => UserTile(
                   title: controller.users.elementAt(i).name,
                   id: controller.users.elementAt(i).id,
+                  email: controller.users.elementAt(i).email,
                 ),
               ),
             );

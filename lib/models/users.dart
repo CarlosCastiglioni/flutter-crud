@@ -2,7 +2,7 @@ class User {
   String id = "";
   String? cpf;
   String name = "";
-  String? email;
+  String email = "";
   String? password;
   List<String>? profiles;
 
@@ -10,7 +10,7 @@ class User {
       {required this.id,
       this.cpf,
       required this.name,
-      this.email,
+      required this.email,
       this.password,
       this.profiles});
 

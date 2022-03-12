@@ -1,8 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_crud/components/cpf_input.dart';
+import 'package:flutter_crud/components/email_input.dart';
+import 'package:flutter_crud/components/password_input.dart';
 import 'package:flutter_crud/modules/home/home_store.dart';
+
+import 'name_input.dart';
 
 class NewUserDialog extends StatefulWidget {
   const NewUserDialog({Key? key}) : super(key: key);
@@ -27,67 +30,16 @@ class _NewUserDialogState extends State<NewUserDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextFormField(
-              decoration: const InputDecoration(labelText: "Nome"),
-              maxLength: 50,
-              validator: (name) {
-                if (name == null || name.isEmpty) {
-                  return "Por favor, digite seu nome";
-                } else {
-                  return null;
-                }
-              },
-              controller: _nameController,
-              keyboardType: TextInputType.emailAddress,
+            NameInput(
+              nameController: _nameController,
             ),
-            TextFormField(
-              decoration: const InputDecoration(labelText: "E-mail"),
-              maxLength: 20,
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: (email) {
-                if (email == null || email.isEmpty) {
-                  return "Por favor, digite seu e-mail";
-                } else if (!RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(_emailController.text)) {
-                  return 'Por favor, digite um e-mail correto';
-                }
-                return null;
-              },
+            EmailInput(
+              emailController: _emailController,
             ),
-            TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(labelText: "Senha"),
-              maxLength: 10,
-              validator: (password) {
-                if (password == null || password.isEmpty) {
-                  return "Por favor, digite sua senha";
-                } else {
-                  return null;
-                }
-              },
-              controller: _passwordController,
-              keyboardType: TextInputType.text,
+            PasswordInput(
+              passwordController: _passwordController,
             ),
-            TextFormField(
-              decoration: const InputDecoration(labelText: "Cpf"),
-              validator: (cpf) {
-                if (cpf == null || cpf.isEmpty) {
-                  return "Por favor, digite seu cpf";
-                } else if (cpf.length < 14) {
-                  return "Por favor, digite um cpf válido";
-                } else {
-                  return null;
-                }
-              },
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                CpfInputFormatter()
-              ],
-              controller: _cpfController,
-              keyboardType: TextInputType.number,
-            ),
+            CpfInput(cpfController: _cpfController),
             const SizedBox(
               height: 5,
             ),
