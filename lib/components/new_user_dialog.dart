@@ -34,9 +34,11 @@ class _NewUserDialogState extends State<NewUserDialog> {
               nameController: _nameController,
             ),
             EmailInput(
+              maxLength: 20,
               emailController: _emailController,
             ),
             PasswordInput(
+              maxLength: 10,
               passwordController: _passwordController,
             ),
             CpfInput(cpfController: _cpfController),

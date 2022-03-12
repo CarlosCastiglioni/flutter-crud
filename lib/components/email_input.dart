@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class EmailInput extends StatelessWidget {
-  const EmailInput({Key? key, required this.emailController}) : super(key: key);
+  const EmailInput({Key? key, required this.emailController, this.maxLength})
+      : super(key: key);
 
   final dynamic emailController;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: const InputDecoration(labelText: "E-mail"),
+      maxLength: maxLength,
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
       validator: (email) {
