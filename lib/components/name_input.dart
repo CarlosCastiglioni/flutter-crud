@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/components/validators/name_validator.dart';
 
 class NameInput extends StatelessWidget {
   const NameInput({Key? key, required this.nameController}) : super(key: key);
@@ -10,13 +11,7 @@ class NameInput extends StatelessWidget {
     return TextFormField(
       decoration: const InputDecoration(labelText: "Nome"),
       maxLength: 50,
-      validator: (name) {
-        if (name == null || name.isEmpty) {
-          return "Por favor, digite seu nome";
-        } else {
-          return null;
-        }
-      },
+      validator: (name) => NameValidator.validate(name),
       controller: nameController,
       keyboardType: TextInputType.emailAddress,
     );
