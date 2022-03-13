@@ -22,7 +22,7 @@ a chamada da rota de login.
 
 ## Home Page
 
-Na home page é feitas uma chamada inicialmente, a função getusers (que é responsável
+Na home page é feita uma chamada inicialmente, a função getusers (que é responsável
 por alimentar a lista de usuários), nela, é feita a validação de token do usuário novamente,
 para não haver risco de a lista vir em branco devido a uma resposta http 403, também foi criado
 um timer, para direcionar o usuário até a login page a cada 5 minutos para novamente, não recebermos
