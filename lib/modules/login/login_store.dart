@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../utils/base_url.dart';
 part 'login_store.g.dart';
 
 class LoginStore = _LoginStoreBase with _$LoginStore;
@@ -11,8 +13,6 @@ class LoginStore = _LoginStoreBase with _$LoginStore;
 String username = '', password = '';
 
 abstract class _LoginStoreBase with Store {
-  final baseUrl = "https://poc-person-service.herokuapp.com/poc/person-api/v1";
-
   Future<bool> login() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var url = Uri.parse("$baseUrl/authenticates/login");

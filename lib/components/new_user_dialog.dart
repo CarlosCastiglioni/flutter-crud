@@ -49,7 +49,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 20,
+                  height: 30,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.red),
                     onPressed: () {
@@ -62,7 +62,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
                   width: 20,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                     onPressed: () async {

@@ -40,35 +40,28 @@ class _HomePageState extends State<HomePage> {
       onRefresh: () => controller.getUsers(),
       child: Scaffold(
         appBar: AppBar(
-          title: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 25.0),
-                child: TextButton(
+          title: const Center(
+            child: Text(
+              "Lista de usuários",
+            ),
+          ),
+          actions: [
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () async {
+                      showDialog(
+                          context: context,
+                          builder: (_) => const NewUserDialog());
+                    },
+                    icon: const Icon(Icons.add)),
+                IconButton(
                     onPressed: () {
                       controller.logout();
                       Navigator.pushReplacementNamed(context, "/login");
                     },
-                    child: const Text(
-                      "Sair",
-                      style: TextStyle(color: Colors.red, fontSize: 14),
-                    )),
-              ),
-              const Text(
-                "Lista de usuários",
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () async {
-                showDialog(
-                    context: context, builder: (_) => const NewUserDialog());
-              },
-              child: const Text(
-                "+ Novo Usuário",
-                style: TextStyle(color: Colors.black, fontSize: 14),
-              ),
+                    icon: const Icon(Icons.logout_outlined)),
+              ],
             )
           ],
         ),

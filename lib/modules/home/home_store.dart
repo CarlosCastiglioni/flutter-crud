@@ -5,13 +5,12 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/users.dart';
+import '../../utils/base_url.dart';
 part 'home_store.g.dart';
 
 class HomeStore = _HomeStoreBase with _$HomeStore;
 
 abstract class _HomeStoreBase with Store {
-  final baseUrl = "https://poc-person-service.herokuapp.com/poc/person-api/v1";
-
   @observable
   String email = "", password = "", cpf = "", name = "";
 
