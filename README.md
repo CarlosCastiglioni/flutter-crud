@@ -33,7 +33,7 @@ no aplicativo e o botão "+ Novo Usuário" onde será feito o cadastro de um nov
 Os componentes utilizados na homepage são: 
 
 - new_user_dialog - onde será feito o cadastro do novo usuário, e este widget é invocado ao
-clicar no botão "+ Novo Usuário", localizado no topo da homepage. Este widget possúi 4 imputs componentizados
+clicar no botão "+ Novo Usuário", localizado no topo da homepage. Este widget possúi 4 inputs componentizados
 para serem inseridos o Nome, E-mail, Senha e Cpf do usuário a ser cadastrado.
 Todos os inserts tem um validator, onde são inseridas as regras de cada um, como número de caracteres do cpf, do nome,
 do cpf e da senha. Todos os inputs também possuem arquivos de teste para reforçar a checagem. 
