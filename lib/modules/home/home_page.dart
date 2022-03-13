@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_crud/components/new_user_dialog.dart';
 import 'package:flutter_crud/components/user_tile.dart';
@@ -13,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeStore();
+  Timer? _rootTimer;
 
   @override
   void initState() {
@@ -20,6 +23,13 @@ class _HomePageState extends State<HomePage> {
     controller.getUsers().then((value) {
       if (controller.unlogged == true) {
         Navigator.pushReplacementNamed(context, "/login");
+      }
+      if (_rootTimer == null) {
+        const time = Duration(minutes: 5);
+        _rootTimer = Timer(time, () {
+          Navigator.pushNamedAndRemoveUntil(
+              context, "/login", (route) => false);
+        });
       }
     });
   }
