@@ -5,7 +5,8 @@ import 'package:flutter_crud/modules/login/login_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Testando se a login page carrega todos os widgets necessários',
+  testWidgets(
+      "Testing if login page component is loading all widgets correctly",
       (tester) async {
     final controller = LoginStore();
     final _emailController = TextEditingController();
@@ -37,7 +38,7 @@ void main() {
                       PasswordInput(passwordController: _passwordController),
                       ElevatedButton(
                           onPressed: () async {
-                            print("Botão funcionou");
+                            print("Button Login Worked");
                             await controller.login();
                           },
                           child: const Text("Entrar"))

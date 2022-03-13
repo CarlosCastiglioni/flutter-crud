@@ -3,7 +3,7 @@ import 'package:flutter_crud/modules/home/home_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Testando se a homepage carrega todos os widgets necessários',
+  testWidgets("Testing if home page component is loading all widgets correctly",
       (tester) async {
     final controller = HomeStore();
 
@@ -19,7 +19,7 @@ void main() {
                     padding: const EdgeInsets.only(right: 25.0),
                     child: TextButton(
                         onPressed: () {
-                          print("Botão Sair Funcionou");
+                          print("Button Sair Worked");
                           controller.logout();
                         },
                         child: const Text(
@@ -35,7 +35,7 @@ void main() {
               actions: [
                 TextButton(
                   onPressed: () async {
-                    print("Botão Dialog Funcionou");
+                    print("Button Dialog Worked");
                   },
                   child: const Text(
                     "+ Novo Usuário",
