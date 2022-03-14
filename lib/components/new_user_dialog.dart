@@ -43,13 +43,13 @@ class _NewUserDialogState extends State<NewUserDialog> {
             ),
             CpfInput(cpfController: _cpfController),
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 30,
+                  height: 25,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.red),
                     onPressed: () {
@@ -62,7 +62,7 @@ class _NewUserDialogState extends State<NewUserDialog> {
                   width: 20,
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 25,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                     onPressed: () async {
