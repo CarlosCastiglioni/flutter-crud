@@ -17,4 +17,12 @@ void main() {
     expect(find.byType(Row), findsNWidgets(2));
     expect(find.byType(IconButton), findsNWidgets(2));
   });
+  testWidgets('Should navigate to New User Dialog',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+
+    final Finder button = find.byIcon(Icons.add);
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+  });
 }

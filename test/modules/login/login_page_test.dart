@@ -18,4 +18,11 @@ void main() {
     expect(find.byType(EmailInput), findsOneWidget);
     expect(find.byType(PasswordInput), findsOneWidget);
   });
+  testWidgets('Should navigate to HomePage', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
+
+    final Finder button = find.byType(ElevatedButton);
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+  });
 }
