@@ -62,6 +62,10 @@ do usuário, em caso de resposta 403 o usuário é imediatamente deslogado e dir
 Foram criados testes para todos os inputs do projeto. Onde são checadas as regras necessárias para cada
 validação.
 
+Também estão sendo testadas todas as páginas de modo a checar se todos os widgets necessários estão presentes.
+
+Também estão sendo testadas todos os componentes de modo a checar se todos os widgets necessários estão presentes.
+
 
 ## Dependências
 
